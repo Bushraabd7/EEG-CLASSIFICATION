@@ -49,13 +49,15 @@ X_test_final = np.concatenate(X_test_all, axis=1)
 
 print(f"✅ FBCSP Feature Shapes → Train: {X_train_final.shape}, Test: {X_test_final.shape}")
 
+# 💾 Save features separately
 # ---------------------------
-# 💾 Save features
-# ---------------------------
-np.savez("features_fbcsp.npz",
-         X_train=X_train_final,
-         X_test=X_test_final,
-         y_train=y[train_idx],
-         y_test=y[test_idx])
+np.savez("features_fbcsp_train.npz",
+         X=X_train_final,
+         y=y[train_idx])
 
-print("💾 Saved as 'features_fbcsp.npz'")
+np.savez("features_fbcsp_test.npz",
+         X=X_test_final,
+         y=y[test_idx])
+
+print("💾 Saved as 'features_fbcsp_train.npz' and 'features_fbcsp_test.npz'")
+
